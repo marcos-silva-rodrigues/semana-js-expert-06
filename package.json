@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node server/index.js",
     "live-reload": "nodemon server/index.js",
+    "live-reload:docker": "docker compose up --build live-reload",
     "test": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' LOG_DISABLED=true  jest --runInBand --no-cache ",
     "test:watch": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' LOG_DISABLED=true  jest --runInBand --no-cache --watchAll",
     "test:coverage": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' LOG_DISABLED=true  jest --runInBand --no-cache --coverage tests/unit"
@@ -23,6 +24,7 @@
   },
   "dependencies": {
     "pino": "^7.8.0",
-    "pino-pretty": "^7.5.3"
+    "pino-pretty": "^7.5.3",
+    "throttle": "^1.0.3"
   }
 }

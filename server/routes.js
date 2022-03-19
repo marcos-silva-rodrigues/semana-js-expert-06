@@ -48,6 +48,17 @@ async function route(request, response) {
     return stream.pipe(response);
   }
 
+  if(method === "GET" && url.includes('/stream')) {
+    const { stream, onClose } = controller.createClientStream();
+    request.once("close", onClose);
+    response.writeHead(200, {
+      'Content-Type': 'audio/mpeg',
+      'Accept-Rages': 'bytes'
+    });
+
+    return stream.pipe(response);
+  }
+
   // files
   if (method === 'GET') {
     const {
